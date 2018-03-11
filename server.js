@@ -35,24 +35,26 @@ app.use((req, res, next) => {
 });
 
 app.post('/login', function(req, res) {
-	user = Users.get(req.body['username']);
+	Users.get(req.body['username']).then(user => {
 
-	if(!user) {
-		res.renderLoginPage({ 'error': 'user not found.' });
-		return;
-	}
+		if(!user) {
+			res.renderLoginPage({ 'error': 'user not found.' });
+			return;
+		}
 
-	if(sha256(req.body['password']) !== user.password) {
+		if(sha256(req.body['password']) !== user.password) {
+			console.log(`authentication successful for user: ${req.body['username']}`)
+			res.renderLoginPage({ 'error': 'Incorrect password.', 'issuer': req.issuer });
+			return;
+		}
+
 		console.log(`authentication successful for user: ${req.body['username']}`)
-		res.renderLoginPage({ 'error': 'Incorrect password.', 'issuer': req.issuer });
-		return;
-	}
-
-	console.log(`authentication successful for user: ${req.body['username']}`)
-	delete user.password;
-	let token = jwt.sign(user, SECRET);
-	res.cookie('user-auth', token, { maxAge: 24 * 60 * 60 * 1000 /* day */ });
-	res.redirectToIssuer(token);
+		delete user.password;
+		let token = jwt.sign(user, SECRET);
+		res.cookie('user-auth', token, { maxAge: 24 * 60 * 60 * 1000 /* day */ });
+		res.redirectToIssuer(token);
+		
+	});
 });
 
 app.get('/login', function(req, res) {
