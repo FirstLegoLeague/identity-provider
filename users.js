@@ -1,19 +1,16 @@
 var sha256 = require('sha256'),
-	users = [{
-		username: 'idanstark42',
-		password: sha256('Password1'),
-		anotherProperty: 'value1'
-	}, {
-		username: 'taltaub',
-		password: sha256('Password2'),
-		anotherProperty: 'value3'
-	}, {
-		username: 'alang',
-		password: sha256('Password3'),
-		anotherProperty: 'value2'
-	}];
+	mongo = require('mongodb-promise');
+
+const MONGO_URL = '127.0.0.1:3000/';
+const DB_NAME = 'users';
+const COLLECTION_NAME = 'users';
 
 exports.get = function(username) {
-	return users.find(user => user.username === username);
+	return mongo.connect(MONGO_URL).then(mongoServer => {
+		let db = mongoServer.db(DB_NAME);
+		let collection = db.collection(COLLECTION_NAME);
+		let users = collection.find({ username: username }).toArray();
+		db.close();
+		return users;
+	}).then(users => users[0]);
 };
-
