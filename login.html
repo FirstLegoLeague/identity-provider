@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+	</head>
+	<body>
+		<div class="error">{{error}}</div>
+		<form action="/login" method="POST">
+			<input type="hidden" name="issuer" value="{{issuer}}">
+			<div class="field">
+				<input type="text" name="username">
+			</div>
+			<div class="field">
+				<input type="password" name="password">
+			</div>
+			<div class="field">
+				<input type="submit" name="login">
+			</div>
+		</form>
+	</body>
+</html>
