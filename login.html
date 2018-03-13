@@ -3,20 +3,28 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Login</title>
+		<link href="{{stylesheet}}" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div class="error">{{error}}</div>
-		<form action="/login" method="POST">
-			<input type="hidden" name="issuer" value="{{issuer}}">
-			<div class="field">
-				<input type="text" name="username">
-			</div>
-			<div class="field">
-				<input type="password" name="password">
-			</div>
-			<div class="field">
-				<input type="submit" name="login">
-			</div>
-		</form>
+		<div class="container">
+			<pre class="title">{{title}}</pre>
+			<form action="/login" method="POST">	
+				<input type="hidden" name="issuer" value="{{issuer}}">
+				<div class="field">
+					<input type="text" placeholder="{{username}}" name="username">
+				</div>
+				<div class="field">
+					<input id="password-field"  type="password" placeholder="{{password}}" name="password">
+					<div onclick="ShowPassword.toggle('#password-field')">{{showPassword}}</div>
+				</div>
+				<div class="field">
+					<input type="submit" name="login" value="LOG IN">
+				</div>
+			</form>
+			<pre class="description">{{description}}</pre>
+		</div>
+		<div class="error message">{{error}}</div>
+		
+		<script src="/show_password.js" type="text/javascript"></script>
 	</body>
 </html>
