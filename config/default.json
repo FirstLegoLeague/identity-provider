@@ -1,5 +1,5 @@
 {
-	"styles": "/stylesheet.css",
+	"stylesheet": "/stylesheet.css",
 	"language": {
 		"login": {
 			"title": "Welcome to the <i>FIRST</i> Lego League scoring system",

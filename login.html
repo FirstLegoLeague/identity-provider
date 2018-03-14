@@ -5,23 +5,23 @@
 		<title>Login</title>
 		<link href="{{stylesheet}}" rel="stylesheet" type="text/css" />
 	</head>
-	<body>
+	<body class="login-page">
 		<div class="container">
-			<pre class="title">{{language.login.title}}</pre>
+			<div class="title">{{language.login.title}}</div>
 			<form action="/login" method="POST">	
 				<input type="hidden" name="issuer" value="{{issuer}}">
 				<div class="field">
-					<input type="text" placeholder="{{username}}" name="username">
+					<input type="text" placeholder="{{language.username}}" name="username">
 				</div>
 				<div class="field">
-					<input id="password-field"  type="password" placeholder="{{password}}" name="password">
+					<input id="password-field"  type="password" placeholder="{{language.password}}" name="password">
 					<div onclick="ShowPassword.toggle('#password-field')">{{language.login.showPassword}}</div>
 				</div>
 				<div class="field">
 					<input type="submit" name="login" value="LOG IN">
 				</div>
 			</form>
-			<pre class="description">{{language.login.description}}</pre>
+			<div class="description">{{language.login.description}}</div>
 		</div>
 		<div class="error message">{{error}}</div>
 		
