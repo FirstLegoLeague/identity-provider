@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, 'default_client')));
 
 app.use((req, res, next) => {
-	req.issuer = req.query['issuer'] || req.params['issuer'] || req.body['issuer'];
+	req.callback_url = req.query['callback_url'] || req.params['callback_url'] || req.body['callback_url'];
 
 	res.redirectToIssuer = function(token) {
-		res.redirect(`${req.issuer}?token=${token}`);
+		res.redirect(`${req.callback_url}?token=${token}`);
 	};
 
 	res.renderLoginPage = function(options) {
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 			.then(content => res.send(content));
 	};
 
-	if(!req.issuer) {
+	if(!req.callback_url) {
 		res.renderLoginPage({ 'error': config.get('language.login.errors.noIssuer') });
 	} else {
 		next();
@@ -48,13 +48,13 @@ app.post('/login', function(req, res) {
 	Users.get(req.body['username']).then(user => {
 
 		if(!user) {
-			res.renderLoginPage({ 'error': config.get('language.login.errors.userNotFound'), 'issuer': req.issuer });
+			res.renderLoginPage({ 'error': config.get('language.login.errors.userNotFound'), 'callback_url': req.callback_url });
 			return;
 		}
 
 		if(sha256(req.body['password']) !== user.password) {
 			console.log(`authentication successful for user: ${req.body['username']}`)
-			res.renderLoginPage({ 'error': config.get('language.login.errors.passwordIncorrect'), 'issuer': req.issuer });
+			res.renderLoginPage({ 'error': config.get('language.login.errors.passwordIncorrect'), 'callback_url': req.callback_url });
 			return;
 		}
 
@@ -70,7 +70,7 @@ app.post('/login', function(req, res) {
 app.get('/login', function(req, res) {
 	if(req.cookies['user-auth']) {
 		try {
-			decoded = jwt.verify(req.cookies['user-auth'], secret);
+			jwt.verify(req.cookies['user-auth'], secret);
 			res.redirectToIssuer(req.cookies['user-auth']);
 			return;
 		} catch(e) {
@@ -78,7 +78,7 @@ app.get('/login', function(req, res) {
 		}
 	}
 	
-	res.renderLoginPage({ 'issuer': req.issuer });
+	res.renderLoginPage({ 'callback_url': req.callback_url });
 });
 
 app.listen(port, function() {

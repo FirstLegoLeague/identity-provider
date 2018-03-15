@@ -9,7 +9,7 @@
 		<div class="container">
 			<div class="title">{{language.login.title}}</div>
 			<form action="/login" method="POST">	
-				<input type="hidden" name="issuer" value="{{issuer}}">
+				<input type="hidden" name="callback_url" value="{{callback_url}}">
 				<div class="field">
 					<input type="text" placeholder="{{language.username}}" name="username">
 				</div>
