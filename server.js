@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 	};
 
 	res.renderLoginPage = function(options) {
-		let templateParams = Object.assign({}, config);
+		var templateParams = Object.assign({}, config);
 		templateParams = Object.assign(templateParams, options);
 		
 		templates.renderTemplateFile(__dirname + '/login.html', templateParams)
@@ -60,7 +60,7 @@ app.post('/login', function(req, res) {
 
 		console.log(`authentication successful for user: ${req.body['username']}`)
 		delete user.password;
-		let token = jwt.sign(user, secret);
+		var token = jwt.sign(user, secret);
 		res.cookie('user-auth', token, { maxAge: 24 * 60 * 60 * 1000 /* day */ });
 		res.redirectToIssuer(token);
 		

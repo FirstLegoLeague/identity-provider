@@ -1,9 +1,10 @@
 var sha256 = require('sha256'),
-	mongo = require('mongodb-promise');
+	mongo = require('mongodb-promise'),
+	config = require('config');
 
-const MONGO_URL = 'mongodb://127.0.0.1:3000/dbname';
-const DB_NAME = 'users';
-const COLLECTION_NAME = 'users';
+const MONGO_URL = config.get('mongo.url');
+const DB_NAME = config.get('mongo.users_db');
+const COLLECTION_NAME = config.get('mongo.users_collection');
 
 exports.get = function(username) {
 	return mongo.MongoClient.connect(MONGO_URL).then(mongoServer => {
