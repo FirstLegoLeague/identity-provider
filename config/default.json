@@ -1,7 +1,7 @@
 {
 	"stylesheet": "/stylesheet.css",
 	"mongo": {
-		"url": "mongodb://127.0.0.1:3000/users",
+		"url": "mongodb://127.0.0.1:27017",
 		"users_db": "users",
 		"users_collection": "users"
 	},

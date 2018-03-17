@@ -53,12 +53,11 @@ app.post('/login', function(req, res) {
 		}
 
 		if(sha256(req.body['password']) !== user.password) {
-			console.log(`authentication successful for user: ${req.body['username']}`)
+			console.log(`authentication failed for user: ${req.body['username']}`)
 			res.renderLoginPage({ 'error': config.get('language.login.errors.passwordIncorrect'), 'callback_url': req.callback_url });
 			return;
 		}
 
-		console.log(`authentication successful for user: ${req.body['username']}`)
 		delete user.password;
 		var token = jwt.sign(user, secret);
 		res.cookie('user-auth', token, { maxAge: 24 * 60 * 60 * 1000 /* day */ });
