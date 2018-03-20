@@ -12,7 +12,7 @@
 			"showPassword": "Show password",
 			"hidePassword": "Hide password",
 			"errors": {
-				"noIssuer": "No callback URL provided. This is a bug with one of the SPs, please contact your system admin.",
+				"noCallbackUrl": "No callback URL provided. This is a bug with one of the SPs, please contact your system admin.",
 				"userNotFound": "We couldn't find that user... Can you try again?",
 				"passwordIncorrect": "This password was incorrect... please try again"
 			}

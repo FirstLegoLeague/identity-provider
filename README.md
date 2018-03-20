@@ -11,9 +11,9 @@ Possible configuraiton values and their defaults can be found in [config/default
 
 # Principle of operation
 The JWT IdP is based upon the redirect binding in SAML, but simpler:  
-1. The Service Provider(SP), weather using the [SP library](https://github.com/FirstLegoLeagueIL/SP) or not, redirects the user to the Identity Provider(IdP) login URL `<idp_url>/login?callback_url=<sp_callback_url>`.
-2. The IdP authenticates the user and pulls its details out of the mongodb. **NOTICE** There is no verification on the callback_url parameter, or on the refferer of the redirection, and thereafore anyone can ask to use the IdP without authentication, but without the secret the IdP has, the SP cannot be sure the response was correct and protected.
-3. The IdP redirects to the callback_url parameter, adding to it the parameter `token` with the value of the JWT of the user, signed with the secret. The secret must be shared across servers upon startup.
+1. The Service Provider(SP), weather using the [SP library](https://github.com/FirstLegoLeagueIL/SP) or not, redirects the user to the Identity Provider(IdP) login URL `<idp_url>/login?callbackUrl=<sp_callbackUrl>`.
+2. The IdP authenticates the user and pulls its details out of the mongodb. **NOTICE** There is no verification on the callbackUrl parameter, or on the refferer of the redirection, and thereafore anyone can ask to use the IdP without authentication, but without the secret the IdP has, the SP cannot be sure the response was correct and protected.
+3. The IdP redirects to the callbackUrl parameter, adding to it the parameter `token` with the value of the JWT of the user, signed with the secret. The secret must be shared across servers upon startup.
 
 ## Development
 1. Fork this repository
