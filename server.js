@@ -2,6 +2,7 @@ const DEFAULT_PORT = 9000;
 const DEFAULT_SECRET = '321LEGO';
 const DEFAULT_TOKEN_EXPIRATION = 24 * 60 * 60 * 1000; // day
 const COOKIE_KEY = 'user-auth';
+const HEADER_KEY = 'auth-token'; // Following the FIRST LEGO League System module standard v1.0
 
 var express = require('express'),
 var app = express();
@@ -63,13 +64,14 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/login', function(req, res) {
-  if(req.cookies[COOKIE_KEY]) {
+  var existingAuthToken = req.get(HEADER_KEY) || req.cookies[COOKIE_KEY];
+  if(existingAuthToken) {
     try {
-      jwt.verify(req.cookies[COOKIE_KEY], secret);
-      res.redirectToCallbackUrl(req.cookies[COOKIE_KEY]);
+      jwt.verify(existingAuthToken, secret);
+      res.redirectToCallbackUrl(existingAuthToken);
       return;
     } catch(err) {
-      console.log(`Someone tried bypassing the system with a wrongly encoded web token: ${req.cookies[COOKIE_KEY]}`)
+      console.log(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
     }
   } else {
     res.renderLoginPage({ 'callbackUrl': req.callbackUrl });
