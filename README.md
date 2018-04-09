@@ -25,7 +25,7 @@ The JWT IdP is based upon the redirect binding in SAML, but simpler:
 
 A few things to notice while developing:
 * Use `yarn` not `npm`
-* Follow javascript conventions as described [here](http://nodeguide.com/style.html)
+* Follow javascript standard as described [here](https://standardjs.com/)
 * Keep the service lightweight
 * Don't break API if not neccessary, and if you do, change the [SP library](https://github.com/FirstLegoLeagueIL/SP) accordingly.
 * Be creative and have fun
