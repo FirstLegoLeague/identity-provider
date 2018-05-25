@@ -2,14 +2,12 @@
 
 const sha256 = require('sha256')
 const mongojs = require('mongojs')
-const config = require('config')
+const Promise = require('bluebird')
 
-const MONGO_URL = config.get('mongo.url')
-const DB_NAME = config.get('mongo.users_db')
-const COLLECTION_NAME = config.get('mongo.users_collection')
+const COLLECTION_NAME = 'users'
 
 exports.get = function (username) {
-  const db = mongojs(`${MONGO_URL}/${DB_NAME}`, [COLLECTION_NAME])
+  const db = mongojs(process.env.MONGO, [COLLECTION_NAME])
   return new Promise((resolve, reject) => {
     db[COLLECTION_NAME].find({ 'username': username }, (err, users) => {
       if (err) {

@@ -1,0 +1,19 @@
+api: "1.0"
+name: "identity provider"
+type: node
+config:
+  - name: Passwords
+    fields:
+      - name: admin
+        dispaly: Admin password
+        type: string
+        default: admin-pw
+      - name: scorekeeper
+        dispaly: Scorekeeper password
+        default: sc-pw
+      - name: referee
+        dispaly: Referee password
+        default: ref-pw
+      - name: M.C.
+        dispaly: M.C. password
+        default: mc-pw

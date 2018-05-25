@@ -3,5 +3,5 @@
 
 
 "@first-lego-league/user-interface@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-1.0.2.tgz#152dc8847e5bbecd1fadd7419e78c01d605173a8"
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-1.0.3.tgz#e3d250a6661ad434057dc1bc534265cc8c370a19"

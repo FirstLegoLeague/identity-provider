@@ -1,13 +1,8 @@
 # IdP
-Identity Provider based on a MongoDB collection
+Identity Provider based on the First Lego League Module Standard
 
 # Basic usage
-Run using `node server.js`  
-
-In order to run with configuration you can add the `NODE_CONFIG` argument when running:  
-`node server NODE_CONFIG={...}`
-
-Possible configuraiton values and their defaults can be found in [config/default.json](https://github.com/FirstLegoLeagueIL/IdP/blob/master/config/default.json).
+Run using `node server.js`  or `npm run start`
 
 # Principle of operation
 The JWT IdP is based upon the redirect binding in SAML, but simpler:  
