@@ -2,6 +2,6 @@
 # yarn lockfile v1
 
 
-"@first-lego-league/user-interface@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-1.0.3.tgz#e3d250a6661ad434057dc1bc534265cc8c370a19"
+"@first-lego-league/user-interface@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/user-interface/-/user-interface-1.0.4.tgz#23b7d343e997f0e5a34c284886fd8739182ac44c"
