@@ -1,4 +1,16 @@
-* {
-    font-family: sans-serif;
-    white-space: inherit;
+@media screen and (min-width: 100vh) {
+	body {
+		background: url(/node_modules/@first-lego-league/user-interface/dist/current/images/background_horizontal.jpg);
+	}
+}
+
+@media screen and (max-width: 100vh) {
+	body {
+		background: url(/node_modules/@first-lego-league/user-interface/dist/current/images/background_vertical.jpg);
+	}
+}
+
+body {
+	background-size: cover;
+	height: 100vh;
 }
