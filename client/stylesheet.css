@@ -1,12 +1,12 @@
 @media screen and (min-width: 100vh) {
 	body {
-		background: url(/node_modules/@first-lego-league/user-interface/dist/current/images/background_horizontal.jpg);
+		background: url(/node_modules/@first-lego-league/user-interface/current/images/background_horizontal.jpg);
 	}
 }
 
 @media screen and (max-width: 100vh) {
 	body {
-		background: url(/node_modules/@first-lego-league/user-interface/dist/current/images/background_vertical.jpg);
+		background: url(/node_modules/@first-lego-league/user-interface/current/images/background_vertical.jpg);
 	}
 }
 
