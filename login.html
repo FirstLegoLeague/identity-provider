@@ -2,11 +2,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Login</title>
-		<link href="/node_modules/@first-lego-league/user-interface/current/app.css" rel="stylesheet" type="text/css" />
+		<link href="/node_modules/@first-lego-league/user-interface/current/assets/css/app.css" rel="stylesheet" type="text/css" />
 		<link href="/stylesheet.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body class="login-page grid-x align-middle align-center">
-		<div class="callout cell small-10 large-8">
+		<div id="main-form" class="callout cell small-10 large-8">
 			<h2>Welcome to the <i>FIRST</i> Lego League scoring system</h2>
 			<form action="/login" method="POST">	
 				<input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
@@ -33,7 +33,7 @@
 		</div>
 		<div class="error message">{{error}}</div>
 		
-		<script src="/node_modules/@first-lego-league/user-interface/current/app.js" type="text/javascript"></script>
+		<script src="/node_modules/@first-lego-league/user-interface/current/assets/js/app.js" type="text/javascript"></script>
 		<script src="/script.js" type="text/javascript"></script>
 	</body>
 </html>
