@@ -1,24 +1,22 @@
 'use strict'
 
 const sha256 = require('sha256')
-const mongojs = require('mongojs')
+const config = require('@first-lego-league/ms-configuration')
 const Promise = require('bluebird')
 
-const COLLECTION_NAME = 'users'
+function generateUser (username, password) {
+  // TODO add mhub password here as well
+  return { username, password }
+}
 
 exports.get = function (username) {
-  const db = mongojs(process.env.MONGO, [COLLECTION_NAME])
-  return new Promise((resolve, reject) => {
-    db[COLLECTION_NAME].find({ 'username': username }, (err, users) => {
-      if (err) {
-        reject(err)
-      } else if (users.length === 0) {
-        reject(new Error('User not found'))
-      } else {
-        resolve(users[0])
+  return config.get(username)
+    .then(password => generateUser(username, password))
+    .then(user => {
+      if (!user.username || user.password) {
+        throw new Error('User not found')
       }
     })
-  })
 }
 
 exports.authenticate = function (user, password) {
