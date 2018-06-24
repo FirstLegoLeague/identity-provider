@@ -24,7 +24,6 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.2.0",
     "path": "^0.12.7",
-    "sha256": "^0.2.0",
     "template-file": "^3.0.1"
   },
   "devDependencies": {
