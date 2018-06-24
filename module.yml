@@ -7,16 +7,12 @@ config:
       - name: admin
         dispaly: Admin password
         type: password
-        default: admin-pw
       - name: scorekeeper
         dispaly: Scorekeeper password
         type: password
-        default: sc-pw
       - name: referee
         dispaly: Referee password
         type: password
-        default: ref-pw
       - name: M.C.
         dispaly: M.C. password
         type: password
-        default: mc-pw
