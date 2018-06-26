@@ -1,6 +1,7 @@
 api: "1.0"
 name: "identity provider"
 type: node
+script: server.js
 config:
   - name: Passwords
     fields:
