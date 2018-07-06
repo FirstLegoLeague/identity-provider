@@ -18,3 +18,7 @@ body {
 #main-form {
 	opacity: 0.8
 }
+
+#error-message:empty {
+    display: none;
+}

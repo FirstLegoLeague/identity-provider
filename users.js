@@ -13,13 +13,13 @@ function sha256 (password, salt) {
   crypto.createHash('sha256').update(password + salt).digest('base64')
 }
 
-exports.get = function (username) {
-  return config.get(username)
-    .then(password => generateUser(username, password))
-    .then(user => {
-      if (!user.username || !user.password) {
+exports.get = function (username, req) {
+  return config.get(username, req)
+    .then(password => {
+      if (!password) {
         throw new Error('User not found')
       }
+      return generateUser(username, password)
     })
 }
 

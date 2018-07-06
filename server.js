@@ -10,10 +10,11 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const templates = require('template-file')
+const domain = require('domain')
 const jwt = require('jsonwebtoken')
-// const config = require('@first-lego-league/ms-configuration')
-const correlationMiddleware = require('@first-lego-league/ms-correlation').correlationMiddleware
-const loggerMiddleware = require('@first-lego-league/ms-logger').loggerMiddleware
+
+const { correlationMiddleware, correlateSession } = require('@first-lego-league/ms-correlation')
+const { Logger, loggerMiddleware } = require('@first-lego-league/ms-logger')
 
 const Users = require('./users')
 
@@ -22,6 +23,7 @@ const secret = process.env.SECRET || DEFAULT_SECRET
 const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
 
 const app = express()
+const logger = new Logger()
 
 app.use(correlationMiddleware)
 app.use(loggerMiddleware)
@@ -36,6 +38,9 @@ app.use((req, res, next) => {
   req.callbackUrl = req.query['callbackUrl'] || req.params['callbackUrl'] || req.body['callbackUrl']
 
   res.redirectToCallbackUrl = function (token) {
+    if (!req.callbackUrl.match(/^http(s)?:\/\//)) {
+      req.callbackUrl = `http://${req.callbackUrl}`
+    }
     res.redirect(`${req.callbackUrl}?token=${token}`)
   }
 
@@ -53,22 +58,14 @@ app.use((req, res, next) => {
 })
 
 app.post('/login', (req, res) => {
-  Users.get(req.body['username'])
-    .catch(err => {
-      const error = err || 'User not found'
-      res.renderLoginPage({ 'error': error, 'callbackUrl': req.callbackUrl })
-    })
-    .then(user => Users.authenticate(user, req.body['password']))
-    .catch(err => {
-      const error = err || 'Incorrect password'
-      res.renderLoginPage({ 'error': error, 'callbackUrl': req.callbackUrl })
-    })
+  Users.get(req.body['username'], req)
     .then(user => {
-      delete user.password
-      const token = jwt.sign(user, secret)
+      user = Users.authenticate(user, req.body['password'])
+      const token = jwt.sign({ username: user.username }, secret)
       res.cookie(TOKEN_KEY, token, { maxAge: tokenExpiration })
       res.redirectToCallbackUrl(token)
-    }).catch(err => res.renderLoginPage({ 'error': err, 'callbackUrl': req.callbackUrl }))
+    })
+    .catch(error => res.renderLoginPage({ 'error': error, 'callbackUrl': req.callbackUrl }))
 })
 
 app.get('/login', (req, res) => {
@@ -86,6 +83,14 @@ app.get('/login', (req, res) => {
   }
 })
 
+app.get('/logout', (req, res) => {
+  res.clearCookie(TOKEN_KEY)
+  res.redirect(`/login?callbackUrl=${req.callbackUrl}`)
+})
+
 app.listen(port, () => {
-  console.log(`Identity Provider listening on port ${port}`)
+  domain.create().run(() => {
+    correlateSession()
+    logger.info(`Identity Provider service listening on port ${port}`)
+  })
 })
