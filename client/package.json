@@ -1,6 +1,9 @@
 {
+  "name": "identity-provider-client",
+  "version": "1.0.0",
+  "main": "login.html",
+  "license": "MIT",
   "dependencies": {
-    "@first-lego-league/user-interface": "^1.0.0"
-  },
-  "version": "1.0.3"
+    "@first-lego-league/user-interface": "^1.0.4"
+  }
 }

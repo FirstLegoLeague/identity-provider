@@ -2,35 +2,38 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Login</title>
-		<link href="/node_modules/@first-lego-league/user-interface/dist/current/app.css" rel="stylesheet" type="text/css" />
+		<link href="/node_modules/@first-lego-league/user-interface/current/assets/css/app.css" rel="stylesheet" type="text/css" />
 		<link href="/stylesheet.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body class="login-page grid-x align-middle align-center">
-		<div class="callout">
-			<div class="title">{{language.login.title}}</div>
+		<div id="main-form" class="callout cell small-10 large-8">
+			<h2>Welcome to the <i>FIRST</i> Lego League scoring system</h2>
 			<form action="/login" method="POST">	
 				<input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
 				<div class="input-group">
-					<input type="text" placeholder="{{language.username}}" name="username">
+					<input type="text" placeholder="username" name="username">
 				</div>
 				<div class="input-group">
-					<input id="password-field"  type="password" placeholder="{{language.password}}" name="password">
+					<input id="password-field"  type="password" placeholder="password" name="password">
 					<div class="password-button button" onclick="ShowPassword.toggle('#password-field'); Display.toggle('.password-button')">
-						{{language.login.showPassword}}
+						<i class="fa fa-eye"></i>
 					</div>
-					<div class="password-button button" style="display: none" onclick="ShowPassword.toggle('#password-field'); Display.toggle('.password-button')">
-						{{language.login.hidePassword}}
+					<div class="password-button button" onclick="ShowPassword.toggle('#password-field'); Display.toggle('.password-button')" style="display: none">
+						<i class="fa fa-eye-slash"></i>
 					</div>
 				</div>
 				<div class="input-group grid-x align-center">
 					<input class="primary button" type="submit" name="login" value="LOG IN">
 				</div>
 			</form>
-			<div class="description">{{language.login.description}}</div>
+			<div id="error-message" class="alert callout">{{error}}</div>
+			<div class="description">
+				<div>Enter a username and a password to log in.</div>
+				<div>If you don't have this information, your tournament organizer or head referee can find it in the "FIRST Lego League Scoring" software window, by clicking the link "Passwords".</div>
+			</div>
 		</div>
-		<div class="error message">{{error}}</div>
 		
-		<script src="/node_modules/@first-lego-league/user-interface/dist/current/app.js" type="text/javascript"></script>
+		<script src="/node_modules/@first-lego-league/user-interface/current/assets/js/app.js" type="text/javascript"></script>
 		<script src="/script.js" type="text/javascript"></script>
 	</body>
 </html>

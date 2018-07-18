@@ -14,18 +14,16 @@
   },
   "homepage": "https://github.com/FirstLegoLeagueIL/IdP#readme",
   "dependencies": {
-    "@first-lego-league/ms-configuration": "file:C:/workspace/flltools/ms-configuration",
-    "@first-lego-league/ms-correlation": "file:../ms-correlation",
-    "@first-lego-league/ms-logger": "file:../ms-logger",
+    "@first-lego-league/ms-auth": "^1.2.2",
+    "@first-lego-league/ms-configuration": "^1.0.4",
+    "@first-lego-league/ms-logger": "^1.2.4",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.2.0",
-    "mongojs": "^2.5.0",
     "path": "^0.12.7",
-    "sha256": "^0.2.0",
     "template-file": "^3.0.1"
   },
   "devDependencies": {

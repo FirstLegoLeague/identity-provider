@@ -1,19 +1,24 @@
 api: "1.0"
-name: "identity provider"
+name: "identity-provider"
+script: server.js
 type: node
+script: server.js
 config:
   - name: Passwords
     fields:
       - name: admin
         dispaly: Admin password
-        type: string
-        default: admin-pw
+        type: password
+        default: admin-pass
       - name: scorekeeper
         dispaly: Scorekeeper password
-        default: sc-pw
+        type: password
+        default: sk-pass
       - name: referee
         dispaly: Referee password
-        default: ref-pw
+        type: password
+        default: ref-pass
       - name: M.C.
         dispaly: M.C. password
-        default: mc-pw
+        type: password
+        default: mc-pass
