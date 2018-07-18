@@ -1,4 +1,6 @@
 'use strict'
+/* eslint node/no-deprecated-api: 0 */
+/* eslint node/no-unsupported-features: 0 */
 
 const DEFAULT_PORT = 9000
 const DEFAULT_SECRET = '321LEGO'
@@ -7,6 +9,7 @@ const TOKEN_KEY = 'auth-token' // Following the FIRST LEGO League System module 
 
 const express = require('express')
 const path = require('path')
+const domain = require('domain')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const templates = require('template-file')
@@ -21,6 +24,7 @@ const Users = require('./users')
 const port = process.env.PORT || DEFAULT_PORT
 const secret = process.env.SECRET || DEFAULT_SECRET
 const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
+const logger = new Logger()
 
 const app = express()
 const logger = new Logger()
@@ -91,6 +95,14 @@ app.get('/logout', (req, res) => {
 app.listen(port, () => {
   domain.create().run(() => {
     correlateSession()
-    logger.info(`Identity Provider service listening on port ${port}`)
+    logger.info(`Identity provider listening on port ${port}`)
+  })
+})
+
+process.on('SIGINT', () => {
+  domain.create().run(() => {
+    correlateSession()
+    logger.info('Process received SIGINT: shutting down')
+    process.exit(1)
   })
 })
