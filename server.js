@@ -88,3 +88,9 @@ app.get('/login', (req, res) => {
 app.listen(port, () => {
   console.log(`Identity Provider listening on port ${port}`)
 })
+
+process.on('SIGINT', () => {
+  logger.info('Process received SIGINT: shutting down')
+  process.exit(1)
+})
+
