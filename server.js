@@ -9,14 +9,12 @@ const TOKEN_KEY = 'auth-token' // Following the FIRST LEGO League System module 
 
 const express = require('express')
 const path = require('path')
-const domain = require('domain')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const templates = require('template-file')
-const domain = require('domain')
 const jwt = require('jsonwebtoken')
 
-const { correlationMiddleware, correlateSession } = require('@first-lego-league/ms-correlation')
+const { correlationMiddleware } = require('@first-lego-league/ms-correlation')
 const { Logger, loggerMiddleware } = require('@first-lego-league/ms-logger')
 
 const Users = require('./users')
@@ -24,7 +22,6 @@ const Users = require('./users')
 const port = process.env.PORT || DEFAULT_PORT
 const secret = process.env.SECRET || DEFAULT_SECRET
 const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
-const logger = new Logger()
 
 const app = express()
 const logger = new Logger()
@@ -93,16 +90,20 @@ app.get('/logout', (req, res) => {
 })
 
 app.listen(port, () => {
-  domain.create().run(() => {
-    correlateSession()
-    logger.info(`Identity provider listening on port ${port}`)
-  })
+  logger.info(`Identity provider listening on port ${port}`)
 })
 
 process.on('SIGINT', () => {
-  domain.create().run(() => {
-    correlateSession()
-    logger.info('Process received SIGINT: shutting down')
-    process.exit(1)
-  })
+  logger.info('Process received SIGINT: shutting down')
+  process.exit(130)
+})
+
+process.on('uncaughtException', err => {
+  logger.fatal(err.message)
+  process.exit(1)
+})
+
+process.on('unhandledRejection', err => {
+  logger.fatal(err.message)
+  process.exit(1)
 })
