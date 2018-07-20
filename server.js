@@ -60,8 +60,8 @@ app.use((req, res, next) => {
 
 app.post('/login', (req, res) => {
   Users.get(req.body['username'], req)
+    .then(user => Users.authenticate(user, req.body['password']))
     .then(user => {
-      user = Users.authenticate(user, req.body['password'])
       const token = jwt.sign({ username: user.username }, secret)
       res.cookie(TOKEN_KEY, token, { maxAge: tokenExpiration })
       res.redirectToCallbackUrl(token)
