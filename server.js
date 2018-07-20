@@ -77,7 +77,8 @@ app.get('/login', (req, res) => {
       res.redirectToCallbackUrl(existingAuthToken)
       return
     } catch (err) {
-      console.log(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
+      logger.warn(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
+      res.renderLoginPage({ 'callbackUrl': req.callbackUrl })
     }
   } else {
     res.renderLoginPage({ 'callbackUrl': req.callbackUrl })
