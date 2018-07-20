@@ -4,7 +4,7 @@
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
-    "dev": "start mhub-server&& node server.js"
+    "start": "start mhub-server&& node server.js"
   },
   "repository": "git+https://github.com/FirstLegoLeagueIL/IdP.git",
   "author": "Idan Stark <idanstark42@gmail.com>",
