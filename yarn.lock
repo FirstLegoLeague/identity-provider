@@ -11,12 +11,11 @@
     path "^0.12.7"
     read-yaml-promise "^1.0.2"
 
-"@first-lego-league/ms-correlation@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-correlation/-/ms-correlation-0.0.4.tgz#ee52ab48cb06bc01a38995b2033d3651f44529f3"
+"@first-lego-league/ms-correlation@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-correlation/-/ms-correlation-0.0.5.tgz#772e5e468cdf2bab93fb7bee06e0140616b23c33"
   dependencies:
     cookie "^0.3.1"
-    jsonwebtoken "^8.2.1"
     randomatic "^3.0.0"
 
 "@first-lego-league/ms-logger@^1.2.5":
@@ -1231,20 +1230,6 @@ jsonwebtoken@^8.2.0:
     lodash.once "^4.0.0"
     ms "^2.1.1"
     xtend "^4.0.1"
-
-jsonwebtoken@^8.2.1:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.3.0.tgz#056c90eee9a65ed6e6c72ddb0a1d325109aaf643"
-  dependencies:
-    jws "^3.1.5"
-    lodash.includes "^4.3.0"
-    lodash.isboolean "^3.0.3"
-    lodash.isinteger "^4.0.4"
-    lodash.isnumber "^3.0.3"
-    lodash.isplainobject "^4.0.6"
-    lodash.isstring "^4.0.1"
-    lodash.once "^4.0.0"
-    ms "^2.1.1"
 
 jwa@^1.1.5:
   version "1.1.6"
