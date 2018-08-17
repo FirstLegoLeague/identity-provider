@@ -1,14 +1,14 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Login</title>
+		<title>TMS Login</title>
 		<link href="/node_modules/@first-lego-league/user-interface/current/assets/css/app.css" rel="stylesheet" type="text/css" />
 		<link href="/stylesheet.css" rel="stylesheet" type="text/css" />
 		<link id="favicon" rel="icon" href="/node_modules/@first-lego-league/user-interface/current/assets/img/first-favicon.ico">
 	</head>
 	<body class="login-page grid-x align-middle align-center">
 		<div id="main-form" class="callout cell small-10 medium-8 large-6">
-			<h3>Welcome to Tournament Management System</h3>
+			<h3>Welcome to the <i>FIRST</i> LEGO League Tournament Management System</h3>
 			<form action="/login" method="POST">	
 				<input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
 				<div class="input-group">
@@ -29,8 +29,7 @@
 			</form>
 			<div id="error-message" class="alert callout">{{error}}</div>
 			<div class="description">
-				<div>Enter a username and a password to log in.</div>
-				<div>If you don't have this information, your tournament organizer or head referee can find it in the "FIRST Lego League Scoring" software window, by clicking the link "Passwords".</div>
+				<div>If you don't have this information, ask your tournament organizer or head referee. If the password is not known, it can be changed in the <b><i>FIRST</i> LEGO League TMS</b> app window, by clicking the links <i>"Settings"</i> and then <i>"Passwords"</i></div>
 			</div>
 		</div>
 		
