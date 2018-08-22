@@ -42,13 +42,20 @@ app.use((req, res, next) => {
     if (!req.callbackUrl.match(/^http(s)?:\/\//)) {
       req.callbackUrl = `http://${req.callbackUrl}`
     }
+    req.logger.debug(`Redirecting to callback URL ${req.callbackUrl} with token ${token}`)
     res.redirect(`${req.callbackUrl}?token=${token}`)
   }
 
   res.renderLoginPage = function (options) {
     templates.renderTemplateFile(path.resolve(__dirname, 'login.html'), options)
-      .then(content => res.send(content))
-      .catch(err => res.send(err))
+      .then(content => {
+        req.logger.debug(`Rending login page with options ${Object.entries(options).map(([key, value]) => `${key}:${value}`).join(',')}`)
+        res.send(content)
+      })
+      .catch(err => {
+        req.logger.error(`Error while rendering login page: ${err}`)
+        res.send(err)
+      })
   }
 
   if (req.callbackUrl) {
