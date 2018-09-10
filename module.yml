@@ -3,6 +3,7 @@ name: "identity-provider"
 type: node
 script: server.js
 hidden: true
+dispaly: roles
 config:
   - name: Passwords
     fields:
