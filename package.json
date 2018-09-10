@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/FirstLegoLeagueIL/IdP#readme",
   "dependencies": {
-    "@first-lego-league/ms-configuration": "1.2.0",
+    "@first-lego-league/ms-configuration": "1.2.1",
     "@first-lego-league/ms-correlation": "0.0.5",
     "@first-lego-league/ms-logger": "^1.2.5",
     "bluebird": "^3.5.1",
