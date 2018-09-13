@@ -19,7 +19,7 @@ config:
         dispaly: Referee password
         type: password
         default: ref-pass
-      - name: M.C.
+      - name: mc
         dispaly: M.C. password
         type: password
         default: mc-pass
