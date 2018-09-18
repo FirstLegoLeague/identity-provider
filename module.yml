@@ -1,5 +1,6 @@
 api: "1.0"
 name: "identity-provider"
+display: "Passwords"
 type: node
 script: server.js
 hidden: true
