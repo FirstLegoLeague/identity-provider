@@ -10,7 +10,7 @@ function generateUser (username, password) {
 }
 
 function sha256 (password, salt) {
-  crypto.createHash('sha256').update(password + salt).digest('base64')
+  return crypto.createHash('sha256').update(password + salt).digest('base64')
 }
 
 exports.get = function (username, req) {
@@ -26,7 +26,7 @@ exports.get = function (username, req) {
 exports.authenticate = function (user, password) {
   return new Promise((resolve, reject) => {
     try {
-      if (user.password !== sha256(password, user.salt)) {
+      if (user.password === sha256(password, user.salt)) {
         resolve(user)
       } else {
         reject(new Error('Authentication falied'))
