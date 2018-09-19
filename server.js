@@ -58,10 +58,10 @@ app.use((req, res, next) => {
       })
   }
 
-  if (req.callbackUrl) {
+  if (req.callbackUrl || req.path === '/login') {
     next()
   } else {
-    res.renderLoginPage({ 'error': 'No callback url specified' })
+    res.redirect('/login?error=No callback url specified')
   }
 })
 
@@ -73,7 +73,7 @@ app.post('/login', (req, res) => {
       res.cookie(TOKEN_KEY, token, { maxAge: tokenExpiration })
       res.redirectToCallbackUrl(token)
     })
-    .catch(error => res.renderLoginPage({ 'error': error, 'callbackUrl': req.callbackUrl }))
+    .catch(error => res.redirect(`/login?error=${error}&callbackUrl=${req.callbackUrl}`))
 })
 
 app.get('/login', (req, res) => {
@@ -85,10 +85,10 @@ app.get('/login', (req, res) => {
       return
     } catch (err) {
       logger.warn(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
-      res.renderLoginPage({ 'callbackUrl': req.callbackUrl })
+      res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })
     }
   } else {
-    res.renderLoginPage({ 'callbackUrl': req.callbackUrl })
+    res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })
   }
 })
 
