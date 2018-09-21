@@ -17,7 +17,7 @@ exports.get = function (username, req) {
   return config.get(username, req)
     .then(password => {
       if (!password) {
-        throw new Error('User not found')
+        throw new Error('Unknown role')
       }
       return generateUser(username, password)
     })
