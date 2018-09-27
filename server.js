@@ -49,7 +49,7 @@ app.use((req, res, next) => {
   res.renderLoginPage = function (options) {
     templates.renderTemplateFile(path.resolve(__dirname, 'login.html'), options)
       .then(content => {
-        req.logger.debug(`Rending login page with options ${Object.entries(options).map(([key, value]) => `${key}:${value}`).join(',')}`)
+        req.logger.debug(`Rending login page with options ${Object.entries(options).filter(([key, value]) => value).map(([key, value]) => `${key}:${value}`).join(',')}`)
         res.send(content)
       })
       .catch(err => {
