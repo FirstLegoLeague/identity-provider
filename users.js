@@ -17,7 +17,7 @@ exports.get = function (username, req) {
   return config.get(username, req)
     .then(password => {
       if (!password) {
-        throw new Error('User not found')
+        throw new Error('Unknown role')
       }
       return generateUser(username, password)
     })
@@ -29,7 +29,7 @@ exports.authenticate = function (user, password) {
       if (user.password === sha256(password, user.salt)) {
         resolve(user)
       } else {
-        reject(new Error('Authentication falied'))
+        reject(new Error('Authentication failed'))
       }
     } catch (err) {
       reject(err)
