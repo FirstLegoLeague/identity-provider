@@ -1,6 +1,6 @@
 {
   "name": "@first-lego-league/idp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
