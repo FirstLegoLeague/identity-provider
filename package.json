@@ -4,7 +4,9 @@
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
-    "start": "set DEV=true&& start mhub-server&& node server.js"
+    "start": "set DEV=true&& start mhub-server&& node server.js",
+    "lint": "eslint \"*.js\"",
+    "lint:fix": "eslint --fix \"*.js\""
   },
   "repository": "git+https://github.com/FirstLegoLeagueIL/IdP.git",
   "author": "Idan Stark <idanstark42@gmail.com>",
@@ -28,11 +30,13 @@
     "template-file": "^3.0.1"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.10.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "@first-lego-league/eslint-config": "^0.0.4",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }

@@ -1,7 +1,3 @@
-'use strict'
-/* eslint node/no-deprecated-api: 0 */
-/* eslint node/no-unsupported-features: 0 */
-
 const DEFAULT_PORT = 9000
 const DEFAULT_SECRET = '321LEGO'
 const TOKEN_EXPIRATION = 24 * 60 * 60 * 1000 // day
@@ -82,7 +78,6 @@ app.get('/login', (req, res) => {
     try {
       jwt.verify(existingAuthToken, secret)
       res.redirectToCallbackUrl(existingAuthToken)
-      return
     } catch (err) {
       logger.warn(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
       res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })
