@@ -1,9 +1,3 @@
-'use strict'
-/* eslint node/no-deprecated-api: 0 */
-/* eslint node/no-unsupported-features: 0 */
-
-const DEFAULT_PORT = 9000
-const DEFAULT_SECRET = '321LEGO'
 const TOKEN_EXPIRATION = 24 * 60 * 60 * 1000 // day
 const TOKEN_KEY = 'auth-token' // Following the FIRST LEGO League System module standard v1.0
 
@@ -19,8 +13,8 @@ const { Logger, loggerMiddleware } = require('@first-lego-league/ms-logger')
 
 const Users = require('./users')
 
-const port = process.env.PORT || DEFAULT_PORT
-const secret = process.env.SECRET || DEFAULT_SECRET
+const port = process.env.PORT
+const secret = process.env.SECRET
 const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
 
 const app = express()
@@ -82,7 +76,6 @@ app.get('/login', (req, res) => {
     try {
       jwt.verify(existingAuthToken, secret)
       res.redirectToCallbackUrl(existingAuthToken)
-      return
     } catch (err) {
       logger.warn(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
       res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })
