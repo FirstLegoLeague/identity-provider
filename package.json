@@ -4,7 +4,7 @@
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"devl node server.js\" \"node ./dummy-module.js\" ",
+    "start": "concurrently devl \"node ./dummy-module.js\" ",
     "lint": "eslint \"*.js\"",
     "lint:fix": "eslint --fix \"*.js\""
   },
@@ -30,7 +30,7 @@
     "template-file": "^3.0.1"
   },
   "devDependencies": {
-    "@first-lego-league/dev-launcher": "^0.0.1",
+    "@first-lego-league/dev-launcher": "^0.1.0",
     "@first-lego-league/eslint-config": "^1.0.0",
     "concurrently": "^4.1.0",
     "connect": "^3.7.0",
