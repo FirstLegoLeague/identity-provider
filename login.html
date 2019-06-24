@@ -1,40 +1,49 @@
 <html>
-	<head>
-		<meta charset="UTF-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<title>TMS Login</title>
-		<link href="/node_modules/@first-lego-league/user-interface/current/assets/css/app.css" rel="stylesheet" type="text/css" />
-		<link href="/stylesheet.css" rel="stylesheet" type="text/css" />
-		<link id="favicon" rel="icon" href="/node_modules/@first-lego-league/user-interface/current/assets/img/first-favicon.ico">
-	</head>
-	<body class="login-page grid-x align-middle align-center">
-		<div id="main-form" class="callout cell small-10 medium-8 large-6">
-			<h3>Welcome to the <i>FIRST</i> LEGO League Tournament Management System</h3>
-			<form action="/login" method="POST">	
-				<input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
-				<div class="input-group">
-					<input type="text" placeholder="role" name="username">
-				</div>
-				<div class="input-group">
-					<input id="password-field" type="password" placeholder="password" name="password">
-					<div class="password-button button" onclick="ShowPassword.toggle('#password-field'); Display.toggle('.password-button')">
-						<i class="fa fa-eye"></i>
-					</div>
-					<div class="password-button button" onclick="ShowPassword.toggle('#password-field'); Display.toggle('.password-button')" style="display: none">
-						<i class="fa fa-eye-slash"></i>
-					</div>
-				</div>
-				<div class="input-group grid-x align-center">
-					<input class="primary button" type="submit" name="login" value="LOG IN">
-				</div>
-			</form>
-			<div id="error-message" class="alert callout">{{error}}</div>
-			<div class="description">
-				<div>If you don't have this information, ask your tournament organizer or head referee. If the password is not known, it can be changed in the <b><i>FIRST</i> LEGO League TMS</b> app window, by clicking the links <i>"Settings"</i> and then <i>"Passwords"</i></div>
-			</div>
-		</div>
-		
-		<script src="/node_modules/@first-lego-league/user-interface/current/assets/js/app.js" type="text/javascript"></script>
-		<script src="/script.js" type="text/javascript"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TMS Login</title>
+    <link href="ui/semantic.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="ui middle aligned centered grid fll image-background">
+    <div class="eleven wide column">
+      <div class="ui very padded transparent segment">
+        <div class="ui divided stackable grid">
+          <div class="six wide column">
+            <form action="/login" method="POST" class="ui large form">  
+            <input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
+            <div class="field">
+              <label>Role</label>
+              <input type="text" name="username">
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <div class="ui action input">
+                <input id="password-field" type="password" name="password">
+                <div class="ui icon password-toggle button"
+                     onclick="$('#password-field').attr('type', $('#password-field').attr('type') == 'text' ? 'password' : 'text') && $('.password-toggle.button i').toggleClass('slash')">
+                  <i class="ui eye icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui centered grid">
+                <div class="ui center aligned column">
+                  <input class="ui black button" type="submit" name="login" value="LOG IN">
+                </div>
+              </div>
+            </div>
+          </form>    
+          </div>
+          <div class="ten wide column">
+            <h3 class="ui header">Welcome to the <i>FIRST</i> LEGO League Tournament Management System</h3>
+            <p>If you don't have this information, ask your tournament organizer or head referee.</p>
+            <p>If the password is not known, it can be changed in the <b><i>FIRST</i> LEGO League TMS</b> app window, by clicking the links <i>"Settings"</i> and then <i>"Passwords"</i>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="ui/semantic.min.js" type="text/javascript"></script>
+  </body>
 </html>
