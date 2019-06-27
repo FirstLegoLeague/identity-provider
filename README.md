@@ -1,3 +1,14 @@
+[![npm](https://img.shields.io/npm/v/@first-lego-league/idp.svg)](https://www.npmjs.com/package/@first-lego-league/identity-provider)
+[![codecov](https://codecov.io/gh/FirstLegoLeague/identity-provider/branch/master/graph/badge.svg)](https://codecov.io/gh/FirstLegoLeague/identity-provider)
+[![Build status](https://ci.appveyor.com/api/projects/status/qnt44wgdsq156p14/branch/master?svg=true)](https://ci.appveyor.com/project/2roy999/identity-provider/branch/master)
+[![GitHub](https://img.shields.io/github/license/FirstLegoLeague/identity-provider.svg)](https://github.com/FirstLegoLeague/identity-provider/blob/master/LICENSE)
+
+
+[![David Dependency Status](https://david-dm.org/FirstLegoLeague/identity-provider.svg)](https://david-dm.org/FirstLegoLeague/identity-provider)
+[![David Dev Dependency Status](https://david-dm.org/FirstLegoLeague/identity-provider/dev-status.svg)](https://david-dm.org/FirstLegoLeague/identity-provider#info=devDependencies)
+[![David Peer Dependencies Status](https://david-dm.org/FirstLegoLeague/identity-provider/peer-status.svg)](https://david-dm.org/FirstLegoLeague/identity-provider?type=peer)
+
+
 # IdP
 Identity Provider based on the First Lego League Module Standard
 
