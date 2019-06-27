@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf public",
     "build": "webpack --mode production",
+    "prepack": "yarn clean && yarn build",
     "lint": "eslint '*.js' client --ext .js",
     "start": "concurrently devl \"node ./dummy-module.js\" \"webpack --watch --mode development\""
   },
