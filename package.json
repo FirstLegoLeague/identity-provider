@@ -4,9 +4,8 @@
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently devl \"node ./dummy-module.js\" ",
     "lint": "eslint \"*.js\"",
-    "lint:fix": "eslint --fix \"*.js\""
+    "start": "concurrently devl \"node ./dummy-module.js\" "
   },
   "repository": "https://github.com/FirstLegoLeague/identity-provider.git",
   "engines": {
