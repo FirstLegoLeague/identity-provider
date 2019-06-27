@@ -28,7 +28,8 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './client/login.html',
       filename: './login.html',
-      favicon: './node_modules/@first-lego-league/user-interface/current/assets/img/first-favicon.ico'
+      favicon: './node_modules/@first-lego-league/user-interface/current/assets/img/first-favicon.ico',
+      inject: 'head'
     })
   ],
   devServer: {
