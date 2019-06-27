@@ -1,5 +1,3 @@
-'use strict'
-
 const config = require('@first-lego-league/ms-configuration')
 const Promise = require('bluebird')
 const crypto = require('crypto')

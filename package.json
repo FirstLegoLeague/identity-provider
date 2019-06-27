@@ -8,13 +8,12 @@
     "lint": "eslint \"*.js\"",
     "lint:fix": "eslint --fix \"*.js\""
   },
-  "repository": "git+https://github.com/FirstLegoLeagueIL/IdP.git",
+  "repository": "https://github.com/FirstLegoLeague/identity-provider.git",
+  "engines": {
+    "node": ">=8.x"
+  },
   "author": "Idan Stark <idanstark42@gmail.com>",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FirstLegoLeagueIL/IdP/issues"
-  },
-  "homepage": "https://github.com/FirstLegoLeagueIL/IdP#readme",
   "dependencies": {
     "@first-lego-league/ms-configuration": "1.3.1",
     "@first-lego-league/ms-correlation": "0.0.5",
@@ -34,12 +33,12 @@
     "@first-lego-league/eslint-config": "^1.0.0",
     "concurrently": "^4.1.0",
     "connect": "^3.7.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
-    "eslint-plugin-import": "^2.17.2",
-    "eslint-plugin-node": "^9.0.1",
-    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0"
   }
 }
