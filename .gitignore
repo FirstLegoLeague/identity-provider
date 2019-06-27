@@ -1,6 +1,7 @@
 # Project Specific
 
 /data
+/public
 /module-config.json
 
 

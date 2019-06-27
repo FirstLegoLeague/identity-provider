@@ -1,4 +1,5 @@
-'use strict'
+import './node_modules/@first-lego-league/user-interface/current/assets/css/app.css'
+import './stylesheet.css'
 
 const ShowPassword = (function (my) {
 
