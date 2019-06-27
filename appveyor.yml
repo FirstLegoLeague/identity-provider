@@ -7,6 +7,4 @@ install:
 
 test_script:
   - yarn lint
-
-build_script:
   - yarn pack
