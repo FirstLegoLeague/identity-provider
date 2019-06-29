@@ -1,5 +1,3 @@
-const DEFAULT_PORT = 9000
-const DEFAULT_SECRET = '321LEGO'
 const TOKEN_EXPIRATION = 24 * 60 * 60 * 1000 // day
 const TOKEN_KEY = 'auth-token' // Following the FIRST LEGO League System module standard v1.0
 
@@ -15,8 +13,8 @@ const { Logger, loggerMiddleware } = require('@first-lego-league/ms-logger')
 
 const Users = require('./users')
 
-const port = process.env.PORT || DEFAULT_PORT
-const secret = process.env.SECRET || DEFAULT_SECRET
+const port = process.env.PORT
+const secret = process.env.SECRET
 const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
 
 const app = express()
@@ -28,8 +26,8 @@ app.use(loggerMiddleware)
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use('/webfonts', express.static(path.resolve(__dirname, 'client/node_modules/@first-lego-league/user-interface/current/assets/fonts')))
-app.use(express.static(path.resolve(__dirname, 'client')))
+app.use('/webfonts', express.static(path.resolve(__dirname, 'node_modules/@first-lego-league/user-interface/current/assets/fonts')))
+app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.use((req, res, next) => {
   req.callbackUrl = req.query['callbackUrl'] || req.params['callbackUrl'] || req.body['callbackUrl']
@@ -43,7 +41,7 @@ app.use((req, res, next) => {
   }
 
   res.renderLoginPage = function (options) {
-    templates.renderTemplateFile(path.resolve(__dirname, 'login.html'), options)
+    templates.renderTemplateFile(path.resolve(__dirname, 'public/login.html'), options)
       .then(content => {
         req.logger.debug(`Rending login page with options ${Object.entries(options).filter(([key, value]) => value).map(([key, value]) => `${key}:${value}`).join(',')}`)
         res.send(content)
