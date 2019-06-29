@@ -5,7 +5,7 @@ const PASSWORD_FIELD_ID = 'password-field'
 const PASSWORD_BUTTONS_CLASS = 'password-button'
 
 function onReady () {
-  const showPassword = () => {
+  const togglePasswordVisibility = () => {
     const elem = document.getElementById(PASSWORD_FIELD_ID)
     elem.type = (elem.type === 'password') ? 'text' : 'password'
   }
@@ -18,7 +18,7 @@ function onReady () {
 
   for (const button of document.getElementsByClassName('password-button')) {
     button.addEventListener('click', () => {
-      showPassword()
+      togglePasswordVisibility()
       switchButtons()
     })
   }
