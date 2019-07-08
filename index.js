@@ -1,7 +1,3 @@
-'use strict'
-/* eslint node/no-deprecated-api: 0 */
-/* eslint node/no-unsupported-features: 0 */
-
 const TOKEN_EXPIRATION = 24 * 60 * 60 * 1000 // day
 const TOKEN_KEY = 'auth-token' // Following the FIRST LEGO League System module standard v1.0
 
@@ -17,6 +13,10 @@ const { Logger, loggerMiddleware } = require('@first-lego-league/ms-logger')
 
 const Users = require('./lib/users')
 
+const port = process.env.PORT
+const secret = process.env.SECRET
+const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
+
 const app = express()
 const logger = new Logger()
 
@@ -26,8 +26,7 @@ app.use(loggerMiddleware)
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use('/jquery', express.static(path.resolve(__dirname, 'node_modules/jquery/dist')))
-app.use('/ui', express.static(path.resolve(__dirname, 'node_modules/@first-lego-league/user-interface/current')))
+app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.use((req, res, next) => {
   req.callbackUrl = req.query['callbackUrl'] || req.params['callbackUrl'] || req.body['callbackUrl']
@@ -41,7 +40,7 @@ app.use((req, res, next) => {
   }
 
   res.renderLoginPage = function (options) {
-    templates.renderTemplateFile(path.resolve(__dirname, 'login.html'), options)
+    templates.renderTemplateFile(path.resolve(__dirname, 'public/login.html'), options)
       .then(content => {
         req.logger.debug(`Rending login page with options ${Object.entries(options).filter(([key, value]) => value).map(([key, value]) => `${key}:${value}`).join(',')}`)
         res.send(content)
@@ -63,8 +62,8 @@ app.post('/login', (req, res) => {
   Users.get(req.body['username'], req)
     .then(user => Users.authenticate(user, req.body['password']))
     .then(user => {
-      const token = jwt.sign({ username: user.username }, process.env.SECRET)
-      res.cookie(TOKEN_KEY, token, { maxAge: TOKEN_EXPIRATION })
+      const token = jwt.sign({ username: user.username }, secret)
+      res.cookie(TOKEN_KEY, token, { maxAge: tokenExpiration })
       res.redirectToCallbackUrl(token)
     })
     .catch(error => res.redirect(`/login?error=${error}&callbackUrl=${req.callbackUrl}`))
@@ -74,7 +73,6 @@ app.get('/login', (req, res) => {
   const existingAuthToken = req.get(TOKEN_KEY) || req.cookies[TOKEN_KEY]
   if (existingAuthToken) {
     try {
-      jwt.verify(existingAuthToken, process.env.SECRET)
       res.redirectToCallbackUrl(existingAuthToken)
       return
     } catch (err) {
@@ -91,8 +89,8 @@ app.get('/logout', (req, res) => {
   res.redirect(`/login?callbackUrl=${req.callbackUrl}`)
 })
 
-app.listen(process.env.PORT, () => {
-  logger.info(`Identity provider listening on port ${process.env.PORT}`)
+app.listen(port, () => {
+  logger.info(`Identity provider listening on port ${port}`)
 })
 
 process.on('SIGINT', () => {

@@ -1,15 +1,4 @@
 extends: "@first-lego-league"
 
-env:
-  mocha: true
-
 parserOptions:
-  sourceType: script
-
-plugins:
-  - chai-expect
-
-rules:
-  chai-expect/no-inner-compare: warn
-  chai-expect/missing-assertion: warn
-  chai-expect/terminating-properties: warn
+  sourceType: module
