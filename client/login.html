@@ -4,43 +4,51 @@
       <title>TMS Login</title>
     <link href="ui/semantic.min.css" rel="stylesheet" type="text/css" />
   </head>
-  <body class="ui middle aligned centered grid fll image-background">
-    <div class="eleven wide column">
-      <div class="ui very padded transparent segment">
-        <div class="ui divided stackable grid">
-          <div class="six wide column">
-            <form action="/login" method="POST" class="ui large form">  
-            <input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
-            <div class="field">
-              <label>Role</label>
-              <input type="text" name="username">
-            </div>
-            <div class="field">
-              <label>Password</label>
-              <div class="ui action input">
-                <input id="password-field" type="password" name="password">
-                <div class="ui icon password-toggle button"
-                     onclick="$('#password-field').attr('type', $('#password-field').attr('type') == 'text' ? 'password' : 'text') && $('.password-toggle.button i').toggleClass('slash')">
-                  <i class="ui eye icon"></i>
+  <body class="fll tile-background">
+    <div class="ui one column doubling stackable grid container" style="height: 100%">
+      <div class="middle aligned column">
+        <div class="ui very padded transparent segment">
+          <div class="ui divided stackable grid">
+            <div class="seven wide column">
+              <form action="/login" method="POST" class="ui large form">  
+              <input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
+              <div class="field">
+                <label>Role</label>
+                <input type="text" name="username">
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <div class="ui action input">
+                  <input id="password-field" type="password" name="password">
+                  <div class="ui icon password-toggle button"
+                       onclick="$('#password-field').attr('type', $('#password-field').attr('type') == 'text' ? 'password' : 'text') && $('.password-toggle.button i').toggleClass('slash')">
+                    <i class="ui eye icon"></i>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="ui centered grid">
-                <div class="ui center aligned column">
-                  <input class="ui black button" type="submit" name="login" value="LOG IN">
+              <div class="field">
+                <div class="ui centered grid">
+                  <div class="ui center aligned column">
+                    <input class="ui black button" type="submit" name="login" value="LOG IN">
+                  </div>
                 </div>
               </div>
+            </form>    
             </div>
-          </form>    
-          </div>
-          <div class="ten wide column">
-            <h3 class="ui header">Welcome to the <i>FIRST</i> LEGO League Tournament Management System</h3>
-            <p>If you don't have this information, ask your tournament organizer or head referee.</p>
-            <p>If the password is not known, it can be changed in the <b><i>FIRST</i> LEGO League TMS</b> app window, by clicking the links <i>"Settings"</i> and then <i>"Passwords"</i>.</p>
+            <div class="nine wide column">
+              <h3 class="ui header">Welcome to the <i>FIRST</i> LEGO League Tournament Management System</h3>
+              <p>If you don't have this information, ask your tournament organizer or head referee.</p>
+              <p>If the password is not known, it can be changed in the <b><i>FIRST</i> LEGO League TMS</b> app window, by clicking the links <i>"Settings"</i> and then <i>"Passwords"</i>.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      const error = '{{error}}'
+      if (error !== '') {
+        toastr.error(error)
+      }
+    </script>
   </body>
 </html>

@@ -2,7 +2,7 @@ api: "1.0"
 name: "identity-provider"
 display: "Passwords"
 type: node
-script: server.js
+script: index.js
 hidden: true
 dispaly: roles
 config:
