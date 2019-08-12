@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken')
 const { correlationMiddleware } = require('@first-lego-league/ms-correlation')
 const { Logger, loggerMiddleware } = require('@first-lego-league/ms-logger')
 
-const Users = require('./users')
+const Users = require('./lib/users')
 
 const port = process.env.PORT
 const secret = process.env.SECRET
@@ -26,7 +26,6 @@ app.use(loggerMiddleware)
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use('/webfonts', express.static(path.resolve(__dirname, 'node_modules/@first-lego-league/user-interface/current/assets/fonts')))
 app.use(express.static(path.resolve(__dirname, 'public')))
 
 app.use((req, res, next) => {
@@ -74,8 +73,8 @@ app.get('/login', (req, res) => {
   const existingAuthToken = req.get(TOKEN_KEY) || req.cookies[TOKEN_KEY]
   if (existingAuthToken) {
     try {
-      jwt.verify(existingAuthToken, secret)
       res.redirectToCallbackUrl(existingAuthToken)
+      return
     } catch (err) {
       logger.warn(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
       res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })

@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 module.exports = {
-  entry: './client/script.js',
+  entry: './client/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'public')
@@ -28,7 +28,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './client/login.html',
       filename: './login.html',
-      favicon: './node_modules/@first-lego-league/user-interface/current/assets/img/first-favicon.ico',
+      favicon: './node_modules/@first-lego-league/user-interface/current/assets/images/first-favicon.ico',
       inject: 'head'
     })
   ],
