@@ -16,8 +16,8 @@
   },
   "files": [
     "public",
-    "server.js",
-    "users.js",
+    "lib",
+    "index.js",
     "module.yml",
     "yarn.lock"
   ],
