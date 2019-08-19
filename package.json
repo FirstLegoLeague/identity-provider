@@ -1,6 +1,6 @@
 {
   "name": "@first-lego-league/identity-provider",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
@@ -16,8 +16,8 @@
   },
   "files": [
     "public",
-    "server.js",
-    "users.js",
+    "lib",
+    "index.js",
     "module.yml",
     "yarn.lock"
   ],
