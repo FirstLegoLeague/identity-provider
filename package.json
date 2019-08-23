@@ -24,7 +24,7 @@
   "author": "Idan Stark <idanstark42@gmail.com>",
   "license": "GPL-3.0",
   "dependencies": {
-    "@first-lego-league/ms-configuration": "^2.2.0",
+    "@first-lego-league/ms-configuration": "^2.2.1",
     "@first-lego-league/ms-correlation": "1.0.1",
     "@first-lego-league/ms-logger": "2.0.0",
     "bluebird": "^3.5.1",
