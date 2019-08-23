@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "prepack": "yarn clean && yarn build",
     "lint": "eslint \"*.js\" client --ext .js",
-    "start": "concurrently devl \"node ./dummy-module.js\" \"webpack --watch --mode development\""
+    "start": "concurrently -k devl \"node ./dummy-module.js\" \"webpack --watch --mode development\""
   },
   "repository": "https://github.com/FirstLegoLeague/identity-provider.git",
   "engines": {
