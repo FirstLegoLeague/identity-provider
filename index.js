@@ -73,6 +73,7 @@ app.get('/login', (req, res) => {
   const existingAuthToken = req.get(TOKEN_KEY) || req.cookies[TOKEN_KEY]
   if (existingAuthToken) {
     try {
+      jwt.verify(existingAuthToken, secret)
       res.redirectToCallbackUrl(existingAuthToken)
       return
     } catch (err) {
