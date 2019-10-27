@@ -11,9 +11,16 @@
             <div class="seven wide column">
               <form action="/login" method="POST" class="ui large form">  
               <input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
-              <div class="field">
-                <label>Role</label>
-                <input type="text" name="username">
+              <div class="ui fluid selection dropdown field">
+                <input type="hidden" name="username">
+                <i class="dropdown icon"></i>
+                <div class="default text">Username</div>
+                <div class="menu">
+                  <div class="item" data-value="admin">admin</div>
+                  <div class="item" data-value="scorekeeper">scorekeeper</div>
+                  <div class="item" data-value="referee">referee</div>
+                  <div class="item" data-value="mc">mc</div>
+                </div>
               </div>
               <div class="field">
                 <label>Password</label>
