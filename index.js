@@ -20,6 +20,16 @@ const tokenExpiration = TOKEN_EXPIRATION // TODO token expiration
 const app = express()
 const logger = new Logger()
 
+let _usernamesPromise
+function getUsernames () {
+  if (!_usernamesPromise) {
+    _usernamesPromise = Users.usernames()
+      .then(usernames => usernames.join(','))
+      .catch(() => '')
+  }
+  return _usernamesPromise
+}
+
 app.use(correlationMiddleware)
 app.use(loggerMiddleware)
 
@@ -78,10 +88,14 @@ app.get('/login', (req, res) => {
       return
     } catch (err) {
       logger.warn(`Someone tried bypassing the system with a wrongly encoded web token: ${existingAuthToken}`)
-      res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })
+      getUsernames().then(usernames => {
+        res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error, usernames })
+      })
     }
   } else {
-    res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error })
+    getUsernames().then(usernames => {
+      res.renderLoginPage({ 'callbackUrl': req.callbackUrl, error: req.query.error, usernames })
+    })
   }
 })
 
