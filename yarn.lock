@@ -39,42 +39,46 @@
   resolved "https://registry.yarnpkg.com/@first-lego-league/eslint-config/-/eslint-config-1.0.0.tgz#897677bf32a4ea842bbf4e3a63b225d6a044d4a4"
   integrity sha512-FYWnInc/zvbnV794tOhQS44qVVi4d9XJkJRWiZo7luWmwkJg8evP+vi7623klw7UrSsPv8q8J1nSHllh3ks4UQ==
 
-"@first-lego-league/ms-configuration@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-configuration/-/ms-configuration-2.2.1.tgz#5550837c578ad00a91b20e6975b8af342dcbd515"
-  integrity sha512-6pbGgtSUaT43vhgsgVzJvb3Is/C+8+QDAOif+oBjx9+ykbA6ZveYSnwGOnRMgwf5CyIHA4nGAkJR722BnTkZLg==
+"@first-lego-league/ms-configuration@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-configuration/-/ms-configuration-2.4.0.tgz#6d24de7a21b861182870a7154cccc1a7f35a80e1"
+  integrity sha512-82bn0UOFqupgR42loLmjAqMkUFdIS3P1J+WHsSUuMQXtVFNGKURzf5n4Q2R7HJUh8Vpx09AcflPgeSmRluGiBQ==
   dependencies:
-    "@first-lego-league/ms-messenger" "^1.2.2"
+    "@first-lego-league/ms-messenger" "^1.4.0"
     bluebird "^3.5.5"
     mhub "^1.0.0"
     path "^0.12.7"
     read-yaml-promise "^1.0.2"
 
-"@first-lego-league/ms-correlation@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-correlation/-/ms-correlation-1.0.2.tgz#ca344a57dcf1a651f2f8c2cf26c07863b56250a3"
-  integrity sha512-bSiaewfo8ErJQE2LjRrN+spBgSfuuK+wJrEuVFVkSCWTNYEX+2l2QNni7bEFPsZEcwM6+5jz09i82pbSUrchAw==
+"@first-lego-league/ms-correlation@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-correlation/-/ms-correlation-1.0.3.tgz#99b177005dfd3facd64f3d6c40c2910dff8427d9"
+  integrity sha512-bp7Xp7p6zBXTrQHwn6exC8vXsA1aLHsiByIuckq6oroKcEhcUGKiqTSwaxlfHFAhqrldaoha+0E3fhKm/WYJbw==
   dependencies:
     cookie "^0.4.0"
     jsonwebtoken "^8.5.1"
     randomatic "^3.1.1"
 
-"@first-lego-league/ms-logger@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-logger/-/ms-logger-2.0.1.tgz#cea7214b6bf273b66aa203c5349fe1240f7c5c3f"
-  integrity sha512-YjuAkxkZN7Zj7zgMjLAGmdslbWUq4Qi3O6BvHMVBhFzM7hGBx9L2P3Ti3qMZ3U8aChDK04Ve81Rz5YoKfunsLw==
+"@first-lego-league/ms-logger@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-logger/-/ms-logger-2.0.2.tgz#e9f882f7f5ce22d3413a986b1215533ac1fa2bd5"
+  integrity sha512-8RqnRYJtHiaQx3Tjpy306boYiRG5MZjy39C2PlkE0iV+UXbiPSEnUAO6ZALbf1ivngJoi81GKG5qFbmo2mPnXw==
   dependencies:
     body-parser "^1.19.0"
     on-finished "^2.3.0"
     on-headers "^1.0.2"
     router "^1.3.3"
 
-"@first-lego-league/ms-messenger@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-messenger/-/ms-messenger-1.2.2.tgz#c4e1e249e1e98bc80c81f3be5326be4f74f754e2"
-  integrity sha512-jAJbdTAf22yL7mRhZkQKKQBzgaMAr4klzF7krRyK3oDcf9kXlBhx+VHX1KIRrPRZJhZXtbTPF+IV4VNaN9vbow==
+"@first-lego-league/ms-messenger@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@first-lego-league/ms-messenger/-/ms-messenger-1.4.0.tgz#8c20b7560a79db0bef835f1b8530dc4fa14385b9"
+  integrity sha512-tVENpiUQTPl1tm0tzDlioaHmHtlZU4GpiMj6UajL22PgjPeGc9rb3RaxNoW3ImO54eaPZPKdWG5F2MjgXVeiNA==
   dependencies:
     mhub "^2.0.0"
+    randomatic "^3.1.1"
+  optionalDependencies:
+    "@first-lego-league/ms-correlation" "^1.0.3"
+    "@first-lego-league/ms-logger" "^2.0.2"
 
 "@first-lego-league/user-interface@^2.1.2":
   version "2.1.2"
@@ -416,10 +420,10 @@ array-flatten@1.1.1:
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
 
-array-flatten@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.1.tgz#426bb9da84090c1838d812c8150af20a8331e296"
-  integrity sha1-Qmu52oQJDBg42BLIFQryCoMx4pY=
+array-flatten@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-3.0.0.tgz#6428ca2ee52c7b823192ec600fa3ed2f157cd541"
+  integrity sha512-zPMVc3ZYlGLNk4mpK1NzP2wg0ml9t7fUgDsayR5Y5rSzxQilzR9FGu/EH2jQOcKSAeAfWeylyW8juy3OkWRvNA==
 
 array-flatten@^2.1.0:
   version "2.1.2"
@@ -1120,10 +1124,15 @@ cookie@0.3.1:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
   integrity sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=
 
-cookie@0.4.0, cookie@^0.4.0:
+cookie@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
+
+cookie@^0.4.0:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
+  integrity sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -3059,7 +3068,12 @@ kind-of@^5.0.0:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
   integrity sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==
 
-kind-of@^6.0.0, kind-of@^6.0.2:
+kind-of@^6.0.0:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
+  integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
@@ -3411,12 +3425,24 @@ mime-db@1.40.0, "mime-db@>= 1.40.0 < 2":
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.40.0.tgz#a65057e998db090f732a68f6c276d387d4126c32"
   integrity sha512-jYdeOMPy9vnxEqFRRo6ZvTZ8d9oPb+k18PKoYNYUe2stVEBPPwsln/qWzdbmaIvnhZ9v2P+CuecK+fpUfsV2mA==
 
-mime-types@~2.1.17, mime-types@~2.1.24:
+mime-db@1.44.0:
+  version "1.44.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.44.0.tgz#fa11c5eb0aca1334b4233cb4d52f10c5a6272f92"
+  integrity sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
+
+mime-types@~2.1.17:
   version "2.1.24"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.24.tgz#b6f8d0b3e951efb77dedeca194cff6d16f676f81"
   integrity sha512-WaFHS3MCl5fapm3oLxU4eYDw77IQM2ACcxQ9RIxfaC3ooc6PFuBMGZZsYpvoXS5D5QTWPieo1jjLdAm3TBP3cQ==
   dependencies:
     mime-db "1.40.0"
+
+mime-types@~2.1.24:
+  version "2.1.27"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.27.tgz#47949f98e279ea53119f5722e0f34e529bec009f"
+  integrity sha512-JIhqnCasI9yD+SsmkquHBxTSEuZdQX5BuQnS2Vc7puQQQ+8yiP5AY5uWhpdv4YL4VM5c6iliiYWPgJ/nJQLp7w==
+  dependencies:
+    mime-db "1.44.0"
 
 mime@1.6.0:
   version "1.6.0"
@@ -4660,16 +4686,16 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     inherits "^2.0.1"
 
 router@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/router/-/router-1.3.3.tgz#c142f6b5ea4d6b3359022ca95b6580bd217f89cf"
-  integrity sha1-wUL2tepNazNZAiypW2WAvSF/ic8=
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/router/-/router-1.3.5.tgz#cb2f47f74fd99a77fb3bc01cc947f46b79b1790f"
+  integrity sha512-kozCJZUhuSJ5VcLhSb3F8fsmGXy+8HaDbKCAerR1G6tq3mnMZFMuSohbFvGv1c5oMFipijDjRZuuN/Sq5nMf3g==
   dependencies:
-    array-flatten "2.1.1"
+    array-flatten "3.0.0"
     debug "2.6.9"
     methods "~1.1.2"
-    parseurl "~1.3.2"
+    parseurl "~1.3.3"
     path-to-regexp "0.1.7"
-    setprototypeof "1.1.0"
+    setprototypeof "1.2.0"
     utils-merge "1.0.1"
 
 run-async@^2.2.0:
@@ -4749,12 +4775,12 @@ selfsigned@^1.10.4:
   dependencies:
     node-forge "0.7.5"
 
-"semver@2 || 3 || 4 || 5":
+"semver@2 || 3 || 4 || 5", semver@^5.6.0:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.1.tgz#a954f931aeba508d307bbf069eff0c01c96116f7"
   integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
 
-semver@^5.3.0, semver@^5.5.0, semver@^5.6.0:
+semver@^5.3.0, semver@^5.5.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
   integrity sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
@@ -4840,6 +4866,11 @@ setprototypeof@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
   integrity sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+
+setprototypeof@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
+  integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
 sha.js@^2.4.0, sha.js@^2.4.8:
   version "2.4.11"
