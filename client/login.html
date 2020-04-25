@@ -12,8 +12,16 @@
               <form action="/login" method="POST" class="ui large form">  
               <input type="hidden" name="callbackUrl" value="{{callbackUrl}}">
               <div class="field">
-                <label>Role</label>
-                <input type="text" name="username">
+                <label>Username</label>
+                <div id="username-input" class="ui input">
+                  <input type="text" name="username">
+                </div>
+                <div id="username-dropdown" class="ui fluid selection dropdown">
+                  <input type="hidden" name="username">
+                  <div class="default text"></div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu"></div>
+                </div>
               </div>
               <div class="field">
                 <label>Password</label>
@@ -47,6 +55,13 @@
       const error = '{{error}}'
       if (error !== '') {
         toastr.error(error)
+      }
+      const usernames = '{{usernames}}'
+      if (usernames === '') {
+        $('#username-dropdown').remove()
+      } else {
+        $('#username-input').remove()
+        $('#username-dropdown').dropdown({ values: usernames.split(',').map(username => ({ name: username, value: username })) })
       }
     </script>
   </body>
