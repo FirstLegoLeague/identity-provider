@@ -1,6 +1,6 @@
 {
   "name": "@first-lego-league/identity-provider",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Identity Provider using jwt-redirection",
   "main": "server.js",
   "scripts": {
@@ -39,7 +39,7 @@
   "devDependencies": {
     "@first-lego-league/dev-launcher": "^0.3.0",
     "@first-lego-league/eslint-config": "^1.0.0",
-    "@first-lego-league/user-interface": "^3.0.0",
+    "@first-lego-league/user-interface": "3.0.1",
     "concurrently": "^4.1.0",
     "connect": "^3.7.0",
     "css-loader": "^3.0.0",
